@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    double x[1000], y[1000];
+    int n; cin >> n;
+    double avgx = 0, avgy = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        cin >> x[i] >> y[i];
+    }
+    for(int i = 1; i <= n; i++)
+    {
+        avgx += x[i];
+        avgy += y[i];
+    }
+    avgx /= n;
+    avgy /= n;
+    double s1 = 0, s2 = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        s1 += (x[i]-avgx)*(x[i]-avgx);
+        s2 += (x[i] - avgx)*(y[i]-avgy);
+    }
+    double m = s2/s1;
+    double b = avgy - m*avgx;
+    cout << "Line of best fit: " << "y = " << m << "x + " << b << endl;
+    double sx = 0, sy = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        sx += (x[i]-avgx)*(x[i]-avgx);
+        sy += (y[i]-avgy)*(y[i]-avgy);
+    }
+    sx /= (n-1);
+    sy /= (n-1);
+    sx = sqrt(sx);
+    sy = sqrt(sy);
+    double r = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        r += (x[i]-avgx)*(y[i]-avgy)/(sx*sy);
+    }
+    r /= (n-1);
+    cout << "Correlation Coefficient: " << r << endl;
+}
+
+
+
+
+
+
+
+
+
+
+
+
