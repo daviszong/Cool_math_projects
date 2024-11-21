@@ -1,0 +1,108 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long double
+
+int n = 26;
+string v = "abcdefghijklmnopqrstuvwxyz";
+string cap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+bool cmp(pair<char,int>p1, pair<char,int>p2)
+{
+    return p1.second >= p2.second;
+}
+
+int lower_int(char x)
+{
+    return (int)x - 97;
+}
+
+int cap_int(char x)
+{
+    return (int)x - 65;
+}
+
+int shift(int pos, int dif)
+{
+    int ans = pos - dif;
+    if(ans < 0) ans += 26;
+    return ans;
+}
+
+char cap_char(int x)
+{
+    return cap[x];
+}
+
+char lower_char(int x)
+{
+    return v[x];
+}
+
+bool upper(char x)
+{
+    int ascii = (int)x;
+    if(ascii >= 97) return false;
+    return true;
+}
+
+bool eligible(char x)
+{
+    int ascii = (int)x;
+    if(65 <= ascii and ascii <= 90) return true;
+    if(97 <= ascii and ascii <= 122) return true;
+    return false;
+}
+
+signed main()
+{
+	vector<int>ans(n, 0);
+	char c;
+	int sum = 0;
+	vector<char>message;
+	while(cin.get(c))
+	{
+	    message.push_back(c);
+	    char i = c;
+	    sum++;
+	    for(int j = 0; j < n; j++)
+	    {
+		    if(v[j] == i or cap[j] == i) 
+            {
+	            ans[j]++;
+	            break;
+            }
+	    }
+	}
+	vector<pair<char, int>>vv;
+	for(int i = 0; i < n; i++)
+	{
+	    vv.push_back({v[i], 100*ans[i]/sum});
+	}
+	sort(vv.begin(), vv.end(), cmp);
+	/*for(auto i : vv)
+	{
+	    cout << i.first << " " << i.second << "%" << endl;
+	}*/
+	char most = vv[0].first;
+	int cipher;
+	if(upper(most)) cipher = (int)most - 69;
+	else cipher = (int)most - 101;
+	for(auto i : message)
+	{
+	    if(!eligible(i)) cout << i;
+	    else 
+	    {
+	        if(upper(i))
+	        {
+	            cout << cap_char(shift(cap_int(i),cipher));
+	        }
+	        else
+	        {
+	            cout << lower_char(shift(lower_int(i), cipher));
+	        }
+	    }
+	}
+}
+
+
+
