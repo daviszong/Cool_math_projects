@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+
+int num = 0;
+int den = 10000000;
+
+bool check(int num, int a, int b)
+{
+    if((b * num <= a * den) && ((num + 1) * b > a * den)) return true;
+    return false;
+}
+
+string func(int x)
+{
+    int y = x + 48;
+    char c = y;
+    string s = "";
+    s += c;
+    return s;
+}
+
+signed main()
+{
+    cout << "When is your birthday? " << endl;
+    cout << "Enter your month (1 for January, 12 for December): ";
+    int mon; cin >> mon;
+    cout << endl;
+    cout << "Enter your day: ";
+    int day; cin >> day;
+    cout << endl;
+    cout << "Enter your year (4 digits): ";
+    int yr; cin >> yr;
+    cout << endl;
+    num += 1000000 * mon;
+    num += 10000 * day;
+    num += yr;
+    int num2 = num;
+    string bday; 
+    while(num2 != 0)
+    {
+        string ne = func(num2 % 10);
+        bday = ne + bday;
+        num2 /= 10;
+    }
+    if(bday.length() == 7) bday = "0." + bday;
+    else
+    {
+        bday.erase(bday.begin());
+        bday = "1." + bday;
+    }
+    int top = 1, bot = 1; 
+    while(!check(num, top, bot))
+    {
+        if(top * den < bot * num) top++;
+        else bot++;
+    }
+    cout << "Your birthday fraction is: " << top << "/" << bot << " ~ " << bday << endl;
+}
