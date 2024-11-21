@@ -1,0 +1,633 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <string>
+#include <bits/stdc++.h>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    cout << "Welcome to the Civ 6 Battle calculator: \n\n";
+    cout << "Press Ctrl + C to interrupt the code at any time. \n";
+    cout << "If you need to type two words, don't include the space in between; likethis.\n";
+    cout << "Please enter all data in lowercase or an error will occur. \n\n";
+    
+    cout << "Attacking unit : ";
+    string aunit; // attacker
+    string ans4="no";
+    int a_strength; // attacker strength
+    cin >> aunit;
+    
+    if(aunit == "warrior"){
+        cout << "Eagle warrior? (type yes or no):  ";
+        string ans1;
+        cin >> ans1;
+        if(ans1=="yes" or ans1=="y"){
+          a_strength=28;
+        }
+        else{
+          a_strength=20; 
+        }
+    }
+    
+    if(aunit == "warcart"){
+        a_strength=30;
+    }
+    
+    if(aunit == "heavychariot"){
+        a_strength=28;
+    }
+    
+    if(aunit == "horsemen"){
+        a_strength=36;
+    }
+    
+    if(aunit == "swordsmen"){
+        cout << "legion? (type yes or no):  ";
+        string ans2;
+        cin >> ans2;
+        if(ans2=="yes" or ans2=="y"){
+            a_strength=40;
+        }
+        else{
+        a_strength=36;
+        }
+    }
+    
+    if(aunit == "samurai"){
+        a_strength=48;
+    }
+    
+    if(aunit == "musketmen"){
+        a_strength=55;
+    }
+    
+    if(aunit == "knight"){
+        a_strength=48;
+    }
+    
+    if(aunit == "cavalry"){
+        cout << "Russia? (type yes or no):  ";
+        string ans3;
+        cin >> ans3;
+        if(ans3=="yes"){
+            a_strength=67;
+        }
+        else{
+        a_strength=62;
+        }
+    }
+    
+    if(aunit == "infantry"){
+        a_strength=70;
+    }
+    
+    if(aunit == "helicopter" or aunit == "tank"){
+        a_strength=82;
+    }
+    
+    if(aunit == "mechanizedinfantry"){
+        a_strength=85;
+    }
+    
+    if(aunit == "modernarmor"){
+        a_strength=90;
+    }
+    
+    if(aunit == "spearmen"){
+        a_strength=25;
+    }
+    
+    if(aunit == "pikemen"){
+        a_strength=41;
+    }
+    
+    if(aunit == "pikeandshot"){
+        a_strength=55;
+    }
+    
+    if(aunit == "atcrew"){
+        a_strength=70;
+    }
+    
+    if(aunit == "slinger"){
+        a_strength=15;
+    }
+    
+    if(aunit == "scout"){
+        a_strength=10;
+    }
+    
+    if(aunit == "archer"){
+        a_strength=25;
+    }
+    
+    if(aunit == "crossbowmen"){
+        a_strength=40;
+    }
+    
+    if(aunit == "fieldcannon"){
+        a_strength=60;
+    }
+    
+    if(aunit == "machinegun"){
+        a_strength=75;
+    }
+    
+    if(aunit == "catapult"){
+        a_strength=35;
+    }
+    
+    if(aunit == "bombard"){
+        a_strength=55;
+    }
+    
+    if(aunit == "artilery"){
+        a_strength=80;
+    }
+    
+    if(aunit == "fighter"){
+        a_strength=100;
+    }
+    
+    if(aunit == "bomber"){
+        a_strength=110;
+    }
+    
+    if(aunit == "city" or aunit== "encampment"){
+        cout << "Enter district bombard strength: ";
+        cin >> a_strength;
+    }
+    
+    cout << "Defending unit : ";
+    string dunit; // defender
+    int d_strength; // defender strength
+    cin >> dunit;
+    
+    if(dunit == "warrior"){
+        cout << "Eagle warrior? (type yes or no):  ";
+        string ans1;
+        cin >> ans1;
+        if(ans1=="yes" or ans1=="y"){
+          d_strength=28;
+        }
+        else{
+          d_strength=20; 
+        }
+    }
+    
+    if(dunit == "warcart"){
+        d_strength=30;
+    }
+    
+    if(dunit == "heavychariot"){
+        d_strength=28;
+    }
+    
+    if(dunit == "horsemen"){
+        d_strength=36;
+    }
+    
+    if(dunit == "swordsmen"){
+        cout << "legion? (type yes or no):  ";
+        string ans2;
+        cin >> ans2;
+        if(ans2=="yes" or ans2=="y"){
+            d_strength=40;
+        }
+        else{
+        d_strength=36;
+        }
+    }
+    
+    if(dunit == "samurai"){
+        d_strength=48;
+    }
+    
+    if(dunit == "musketmen"){
+        d_strength=55;
+    }
+    
+    if(dunit == "knight"){
+        d_strength=48;
+    }
+    
+    if(dunit == "cavalry"){
+        cout << "Russia? (type yes or no):  ";
+        string ans3;
+        cin >> ans3;
+        if(ans3=="yes"){
+            d_strength=67;
+        }
+        else{
+        d_strength=62;
+        }
+    }
+    
+    if(dunit == "infantry"){
+        d_strength=70;
+    }
+    
+    if(dunit == "helicopter" or dunit == "tank"){
+        d_strength=82;
+    }
+    
+    if(dunit == "mechanizedinfantry"){
+        d_strength=85;
+    }
+    
+    if(dunit == "modernarmor"){
+        d_strength=90;
+    }
+    
+    if(dunit == "spearmen"){
+        d_strength=25;
+    }
+    
+    if(dunit == "pikemen"){
+        d_strength=41;
+    }
+    
+    if(dunit == "pikeandshot"){
+        d_strength=55;
+    }
+    
+    if(dunit == "atcrew"){
+        d_strength=70;
+    }
+    
+    if(dunit == "slinger"){
+        d_strength=5;
+    }
+    
+    if(dunit == "scout"){
+        d_strength=10;
+    }
+    
+    if(dunit == "archer"){
+        d_strength=15;
+    }
+    
+    if(dunit == "crossbowmen"){
+        d_strength=30;
+    }
+    
+    if(dunit == "fieldcannon"){
+        d_strength=50;
+    }
+    
+    if(dunit == "machinegun"){
+        d_strength=65;
+    }
+    
+    if(dunit == "catapult"){
+        d_strength=23;
+    }
+    
+    if(dunit == "bombard"){
+        d_strength=40;
+    }
+    
+    if(dunit == "artilery"){
+        d_strength=60;
+    }
+    
+    if(dunit == "fighter"){
+        d_strength=100;
+    }
+    
+    if(dunit == "bomber"){
+        d_strength=85;
+    }
+    
+    if(dunit == "city" or dunit== "encampment"){
+        cout << "Enter district defense strength: ";
+        cin >> d_strength;
+        cout << "Does district have walls? (type yes or no): ";
+        cin >> ans4;
+    }
+    
+    double ahp;
+    double dhp;
+    double whp;
+    cout << "Attacker hp: ";
+    cin >> ahp;
+    cout << "Defender hp: ";
+    cin >> dhp;
+    
+    if(ans4=="yes"){
+        cout << "Wall hp: ";
+        cin >> whp;
+    }
+    
+    if((aunit != "city" && aunit != "encampment")==1){
+    a_strength=a_strength-(10-ahp/10);
+    }
+    
+    if((dunit != "city" && aunit != "encampment")==1){
+    d_strength=d_strength-(10-dhp/10);
+    }
+    
+    if(aunit=="samurai"){
+        a_strength=a_strength+(10-ahp/10);
+    }
+
+    if(dunit=="samurai"){
+        d_strength=d_strength+(10-dhp/10);
+    }
+    
+    if((dunit != "city" && dunit != "encampment")==1){
+    cout << "Defender fortified? (type yes or no):  ";
+    string Ans;
+    cin >> Ans;
+    if(Ans=="yes"){
+        d_strength = d_strength + 6;
+    }
+    }
+    
+    if((dunit != "city" && dunit != "encampment")==1){
+    cout << "Is there a river in between? (type yes or no):   ";
+    string ANs;
+    cin >> ANs;
+    if(ANs=="yes"){
+        d_strength = d_strength + 5;
+    }
+    }
+    
+    string atype,dtype;
+    
+    if((aunit == "warrior" || aunit=="swordsmen" || aunit=="musketmen" || aunit=="samurai" || aunit=="infantry" || aunit=="mechanizedinfantry")==1){
+        atype="melee";
+    }
+    
+    if((aunit == "pikemen" || aunit=="spearmen" || aunit=="pikeandshot" || aunit=="atcrew")==1){
+        atype="anticav";
+    }
+    
+    if((aunit == "heavychariot" || aunit=="horsemen" || aunit=="knight" || aunit=="cavalry" || aunit=="tank" || aunit=="helicopter" || aunit=="modernarmor")==1){
+        atype="cav";
+    }
+    
+    if((aunit == "catapult" || aunit == "bombard" || aunit == "artilery" || aunit == "bomber")==1){
+        atype="siege";
+    }
+    
+    if((aunit == "city" || aunit == "encampment")==1){
+        atype="district";
+    }
+
+    if((aunit == "slinger" || aunit == "archer" || aunit=="crossbowmen" || aunit == "fieldcannon" || aunit == "machinegun" || aunit == "fighter")==1){
+        atype="ranged";
+    }
+    
+    if((dunit == "warrior" || dunit=="swordsmen" || dunit=="samurai" || dunit=="musketmen" || dunit=="infantry" || dunit=="mechanizedinfantry")==1){
+        dtype="melee";
+    }
+    
+    if((dunit == "pikemen" || dunit=="spearmen" || dunit=="pikeandshot" || dunit=="atcrew")==1){
+        dtype="anticav";
+    }
+    
+    if((dunit == "heavychariot" || dunit=="horsemen" || dunit=="knight" || dunit=="cavalry" || dunit=="tank" || dunit=="helicopter" || dunit=="modernarmor")==1){
+        dtype="cav";
+    }
+    
+    if((dunit == "catapult" || dunit == "bombard" || dunit == "artilery" || dunit == "bomber")==1){
+        dtype="siege";
+    }
+    
+    if((dunit == "city" || dunit == "encampment")==1){
+        dtype="district";
+    }
+    
+    if((atype=="anticav" && dtype=="cav")==1){
+        a_strength += 10;
+    }
+    if((atype=="cav" && dtype=="anticav")==1){
+        d_strength += 10;
+    }
+    if((atype=="melee" && dtype=="anticav")==1){
+        a_strength += 10;
+    }
+    if((atype=="anticav" && dtype=="melee")==1){
+        d_strength += 10;
+    }
+    
+    if((atype=="siege" && dtype != "district")==1){
+        a_strength -= 17;
+    }
+    
+    if((dtype=="district" && atype == "ranged")==1){
+        a_strength -= 17;
+    }
+    
+    int dif=a_strength-d_strength;
+
+if(dtype != "district"){    
+    
+    if((atype == "ranged" || atype=="siege" || atype == "district")==1){
+        ahp=ahp;
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "health: " << dhp << endl;
+    }
+    
+    else{
+    ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+    dhp=dhp-(30*pow(2.71,0.04*dif));
+    cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+    cout << dunit << " (defender, strength = " << d_strength << " ) "<< "health: " << dhp << endl;
+    }
+    
+}    
+
+if(dtype == "district"){    
+    
+    if((atype == "ranged" && ans4=="yes" && whp >= 70)==1){
+        ahp=ahp;
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-1;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "ranged" && ans4=="yes" && whp >= 30 && whp < 70)==1){
+        ahp=ahp;
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-5;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "ranged" && ans4=="yes" && whp < 30)==1){
+        ahp=ahp;
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype=="ranged" && ans4=="no")==1){
+        ahp=ahp;
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "siege" && ans4=="yes" && whp >= 70)==1){
+        ahp=ahp;
+        whp=whp-(30*pow(2.71,0.04*dif));
+        dhp=dhp-1;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "siege" && ans4=="yes" && whp >= 30 && whp < 70)==1){
+        ahp=ahp;
+        whp=whp-(30*pow(2.71,0.04*dif));
+        dhp=dhp-5;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "siege" && ans4=="yes" && whp < 30)==1){
+        ahp=ahp;
+        whp=whp-(30*pow(2.71,0.04*dif));
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype=="siege" && ans4=="no")==1){
+        ahp=ahp;
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "melee" && ans4=="yes" && whp >= 70)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-1;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "melee" && ans4=="yes" && whp >= 30 && whp < 70)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-5;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "melee" && ans4=="yes" && whp < 30)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype=="melee" && ans4=="no")==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "cav" && ans4=="yes" && whp >= 70)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-1;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "cav" && ans4=="yes" && whp >= 30 && whp < 70)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-5;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "cav" && ans4=="yes" && whp < 30)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype=="cav" && ans4=="no")==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "anticav" && ans4=="yes" && whp >= 70)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-1;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "anticav" && ans4=="yes" && whp >= 30 && whp < 70)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-5;
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype == "anticav" && ans4=="yes" && whp < 30)==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        whp=whp-(0.15*(30*pow(2.71,0.04*dif)));
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "wall health: " << whp << endl;
+        cout << "district health: " << dhp << endl;
+    }
+    
+    else if((atype=="anticav" && ans4=="no")==1){
+        ahp=ahp-(30*pow(2.71,0.04*(0-dif)));
+        dhp=dhp-(30*pow(2.71,0.04*dif));
+        cout << aunit << " (attacker, strength = " << a_strength << " ) "<< "health: " << ahp << endl;
+        cout << dunit << " (defender, strength = " << d_strength << " ) "<< "district health: " << dhp << endl;
+    }
+    
+    
+}  
+    
+    return 0;
+}
+
+
+
+
+
+
