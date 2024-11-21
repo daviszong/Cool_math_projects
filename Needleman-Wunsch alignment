@@ -1,0 +1,123 @@
+#include <bits/stdc++.h>
+// explore smith-waterman algorithm when bored
+using namespace std;
+
+const int MAXN = 200;
+int m[MAXN][MAXN];
+int pre[MAXN][MAXN];
+
+int mscore = 1, mmscore = -1, gapscore = -1;
+
+void init(string x, string y)
+{
+    int xlen = x.length(), ylen = y.length();
+    m[0][0] = 0;
+    for(int i = 1; i <= x.length() + 1; i++) m[i][0] = -i;
+    for(int i = 1; i < y.length() + 1; i++) m[0][i] = -i;
+    for(int i = 0; i < MAXN; i++) 
+    {
+        for(int j = 0; j < MAXN; j++)
+        {
+            pre[i][j] = 0;
+        }
+        for(int i = 1; i < MAXN; i++)
+        {
+            pre[i][0] = 2;
+        }
+        for(int i = 1; i < MAXN; i++)
+        {
+            pre[0][i] = 1;
+        }
+    }
+}
+
+void align(string x, string y)
+{
+    for(int i = 1; i <= x.length(); i++)
+    {
+        for(int j = 1; j <= y.length(); j++)
+        {
+            int match = mmscore;
+            if(x[i-1] == y[j-1]) match = mscore;
+            int cand1 = m[i-1][j-1] + match;
+            int cand2 = m[i-1][j] + gapscore;
+            int cand3 = m[i][j-1] + gapscore;
+            m[i][j] = max(cand1, max(cand2, cand3));
+            if(cand1 == m[i][j]) pre[i][j] += 4;
+            if(cand2 == m[i][j]) pre[i][j] += 2;
+            if(cand3 == m[i][j]) pre[i][j] += 1;
+            //cout << i << " " << j << " " << m[i][j] << endl;
+        }
+    }
+    string ans1 = "", ans2 = "";
+    int i = x.length(), j = y.length();
+    while(1)
+    {
+        if(i == 0 and j == 0) break;
+        if(pre[i][j] >= 4) 
+        {
+            ans1 += x[i-1];
+            ans2 += y[j-1];
+            i -= 1;
+            j -= 1;
+        }
+        else if(pre[i][j] >= 2)
+        {
+            ans1 += x[i-1];
+            ans2 += " ";
+            i -= 1;
+        }
+        else if(pre[i][j] >= 1)
+        {
+            ans1 += " ";
+            ans2 += y[j-1];
+            j -= 1;
+        }
+    }
+    cout << "Score: " << m[x.length()][y.length()] << endl;
+    cout << endl;
+    cout << "One optimal alignment is: " << endl;
+    reverse(ans1.begin(), ans1.end());
+    reverse(ans2.begin(), ans2.end());
+    cout << ans1 << endl;
+    cout << ans2 << endl;
+    cout << endl;
+}
+
+void print_matrix(int a, int b)
+{
+    for(int i = 0; i <= a; i++)
+    {
+        for(int j = 0; j <= b; j++)
+        {
+            cout << m[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void print_matrix2(int a, int b)
+{
+    for(int i = 0; i <= a; i++)
+    {
+        for(int j = 0; j <= b; j++)
+        {
+            cout << pre[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main()
+{
+    string s1, s2;
+    cin >> s2 >> s1;
+    init(s1, s2);
+    align(s1, s2);
+    cout << "Alignment Matrix: " << endl;
+    print_matrix(s1.length(), s2.length());
+    cout << endl;
+    cout << "Arrows Matrix: " << endl;
+    print_matrix2(s1.length(), s2.length());
+}
+
