@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#define int long double
+using namespace std;
+
+int chi_component(int observed, int expected)
+{
+    return (observed - expected) * (observed - expected)/expected;
+}
+
+signed main()
+{
+    int n; cin >> n;// # of elements in data
+    vector<int>obs;
+    vector<int>expec;
+    for(int i = 0; i < n; i++)
+    {
+        int tt; cin >> tt;
+        obs.push_back(tt);
+    }
+    for(int i = 0; i < n; i++)
+    {
+        int tt; cin >> tt;
+        expec.push_back(tt);
+    }
+    //for(auto i : expec) cout << i << " ";
+    //cout << endl;
+    vector<int>residuals;
+    for(int i = 0; i < n; i++)
+    {
+        residuals.push_back(chi_component(obs[i], expec[i]));
+    }
+    int sum = 0;
+    for(auto i : residuals) sum += i;
+    cout << "chi squared = " << sum << endl;
+    cout << "df = " << n - 1 << endl;
+}
