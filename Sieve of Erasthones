@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<int>primes;
+    int n; cin >> n;
+    int nums_per_row = 50;
+    primes.resize(n+1, true);
+    if(n == 0 || n == 1)
+    {
+        cout << "NO PRIMES LESS THAN OR EQUAL TO " << n << endl;
+        return 0;
+    }
+    primes[0] = false;
+    primes[1] = false;
+    primes[2] = true;
+    for(int i = 2; i <= n; i++)
+    {
+        if(!primes[i]) continue;
+        for(int j = i*2; j <= n; j += i)
+        {
+            primes[j] = false;
+        }
+    }
+    int cnt = 0;
+    for(int i = 2; i <= n; i++)
+    {
+        if(primes[i]) 
+        {
+            //cout << i << " ";
+            cnt++;
+            /*if(cnt % nums_per_row == 0)
+            {
+                cout << endl;
+            }*/
+        }
+    }
+    //cout << endl;
+    cout << "TOTAL PRIMES LESS THAN OR EQUAL TO " << n << " is " << cnt << endl;
+}
