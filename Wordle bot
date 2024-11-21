@@ -1,0 +1,155 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+map<string, int>pnts;
+string alp = "abcdefghijklmnopqrstuvwxyz";
+
+bool repeat(string x)
+{
+    sort(x.begin(), x.end());
+    for(int i = 0; i < 4; i++)
+        if(x[i] == x[i+1]) return true;
+    return false;
+}
+
+bool cmp(string a, string b)
+{
+    if(repeat(a) and !repeat(b)) return false;
+    else if(!repeat(a) and repeat(b)) return true;
+    return pnts[a] > pnts[b];
+}
+
+string query(string a, string b)
+{
+    string res = "";
+    for(int i = 0; i < 5; i++)
+    {
+        if(a[i] == b[i]) res += "2";
+        else
+        {
+            bool pos = false;
+            for(auto j : b)
+            {
+                if(a[i] == j) pos = true;
+            }
+            if(pos) res += "1";
+            else res += "0";
+        }
+    }
+    return res;
+}
+
+int points(string a, string b)
+{
+    int res = 0;
+    for(int i = 0; i < 5; i++)
+    {
+        if(a[i] == b[i]) res += 2;
+        else
+        {
+            bool pos = false;
+            for(auto j : b)
+            {
+                if(a[i] == j) pos = true;
+            }
+            if(pos) res += 1;
+            else res += 0;
+        }
+    }
+    return res;
+}
+
+int main() // stare, arose, raise, arise, slate, saner, snare, irate, crate, stale, trace, share, crane, scare, etc.
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    vector<pair<string,string>>v;
+    int turns; cin >> turns;
+    while(turns--)
+    {
+        string word, result;
+        cin >> word >> result;
+        v.push_back({word, result});
+    }
+    vector<string>vocab;
+    string s; cin >> s;
+    while(cin >> s)
+    {
+        vocab.push_back(s);
+    }
+    //cout << vocab.size() << endl;
+    map<char,int>status;
+    for(auto i : alp) status[i] = 0;
+    vector<string>cand;
+    for(auto i : v)
+    {
+        string word = i.first, result = i.second;
+        for(int j = 0; j < 5; j++)
+        {
+            if(result[j] == '1') status[word[j]] = 1;
+            else if(result[j] == '2') status[word[j]] = 2;
+        }
+    }
+    for(auto i : vocab)
+    {
+        bool good = true;
+        for(auto j : v)
+        {
+            string word = j.first, result = j.second;
+            if(query(word, i) != result) good = false;
+        }
+        if(good) cand.push_back(i);
+    }
+    if(cand.size() >= 4 and cand.size() < 50)
+    {
+        for(auto i : vocab)
+        {
+            int tot = 0;
+            for(auto j : cand)
+            {
+                int res = 0;
+                for(int k = 0; k < 5; k++)
+                {
+                    int cur = 0;
+                    string a = i, b = j;
+                    if(a[k] == b[k]) cur += 2;
+                    else
+                    {
+                        bool pos = false;
+                        for(auto l : b)
+                        {
+                            if(a[k] == l) pos = true;
+                        }
+                        if(pos) cur += 1;
+                    }
+                    cur -= min(status[a[k]], cur);
+                    res += cur;
+                }
+                tot += res;
+            }
+            pnts[i] = tot;
+        }
+        sort(vocab.begin(), vocab.end(), cmp);
+    }
+    else
+    {
+        for(auto i : cand)
+        {
+            int tot = 0;
+            for(auto j : cand)
+            {
+                tot += points(i, j);
+            }
+            pnts[i] = tot;
+            //cout << tot << endl;
+        }
+    }
+    sort(cand.begin(), cand.end(), cmp);
+    cout << cand.size() << endl;
+    if(cand.size() >= 4 and cand.size() < 50)
+    {
+        //for(auto i : vocab) cout << i << " " << pnts[i] << endl;
+        cout << "smart guess: " << vocab[0] << endl;
+    }
+    for(auto i : cand) cout << i << " " << pnts[i] << endl;
+}
